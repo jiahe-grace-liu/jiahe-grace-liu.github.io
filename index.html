@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jiahe (Grace) Liu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1f2937;
+    --text-soft: #4b5563;
+    --text-muted: #6b7280;
+    --accent: #4a90c8;          /* soft academic blue */
+    --accent-soft: #e8f1f8;     /* very light blue */
+    --accent-line: #d6e6f2;
+    --border: #eef0f3;
+    --max-width: 880px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    border-bottom: 1px solid transparent;
+  }
+  a:hover {
+    color: #2d6ea3;
+    border-bottom-color: var(--accent);
+  }
+
+  /* ---------- Nav ---------- */
+  nav.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav.topnav .inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  nav.topnav .brand {
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  nav.topnav ul {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  nav.topnav a {
+    color: var(--text-soft);
+    font-size: 14.5px;
+    font-weight: 500;
+    border-bottom: none;
+  }
+  nav.topnav a:hover { color: var(--accent); }
+
+  /* ---------- Layout ---------- */
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  section {
+    padding-top: 64px;
+    scroll-margin-top: 72px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--text);
+  }
+  h1 { font-size: 2.1rem; margin: 0 0 8px; }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0 0 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--accent-line);
+  }
+  h3 { font-size: 1.05rem; margin: 0 0 4px; font-family: 'Inter', sans-serif; font-weight: 600; }
+
+  p { margin: 0 0 14px; color: var(--text-soft); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-top: 72px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .hero .avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-family: 'Newsreader', serif;
+    font-size: 4rem;
+    font-weight: 400;
+  }
+  .hero .avatar img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .hero .role {
+    color: var(--text-soft);
+    font-size: 1.05rem;
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+  .hero .affiliation {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+  .hero .affiliation .dot {
+    color: var(--accent);
+    margin: 0 8px;
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+    font-size: 0.92rem;
+  }
+  .socials a {
+    color: var(--text-soft);
+    border-bottom: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .socials a:hover { color: var(--accent); }
+  .socials svg { width: 16px; height: 16px; }
+
+  /* ---------- About ---------- */
+  .interests {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    background: var(--accent-soft);
+    color: #2d6ea3;
+    border: 1px solid var(--accent-line);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- News ---------- */
+  .news-scroll {
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 0 12px 0 8px;  /* left padding so timeline dots aren't clipped */
+    /* fade hint at bottom */
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  }
+  .news-scroll::-webkit-scrollbar { width: 6px; }
+  .news-scroll::-webkit-scrollbar-track { background: transparent; }
+  .news-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent-line);
+    border-radius: 3px;
+  }
+  .news-scroll::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+  .news-scroll { scrollbar-width: thin; scrollbar-color: var(--accent-line) transparent; }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 2px solid var(--accent-line);
+  }
+  .news-list li {
+    position: relative;
+    padding: 10px 0 10px 22px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+  }
+  .news-list li::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 18px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .news-list .date {
+    display: inline-block;
+    min-width: 90px;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    margin-right: 8px;
+  }
+
+  /* ---------- Publications ---------- */
+  .pub-year {
+    font-family: 'Newsreader', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin: 24px 0 10px;
+    font-weight: 500;
+  }
+  .pub {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .pub:last-child { border-bottom: none; }
+  .pub .thumb {
+    width: 200px;
+    height: 140px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 0.8rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .pub .thumb:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(74, 144, 200, 0.18);
+  }
+  .pub .thumb a { display: block; width: 100%; height: 100%; border-bottom: none; }
+  .pub .thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; display: block; }
+  .pub-title {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 1rem;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .pub-authors {
+    font-size: 0.92rem;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+  }
+  .pub-authors .me { color: var(--text); font-weight: 600; }
+  .pub-venue {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .pub-links {
+    display: flex;
+    gap: 12px;
+    font-size: 0.85rem;
+  }
+  .pub-links a {
+    padding: 2px 10px;
+    border: 1px solid var(--accent-line);
+    border-radius: 4px;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .pub-links a:hover { background: var(--accent); color: white; }
+
+  /* ---------- Teaching / CV ---------- */
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .row:last-child { border-bottom: none; }
+  .row .label { color: var(--text); font-weight: 500; }
+  .row .meta { color: var(--text-muted); font-size: 0.88rem; white-space: nowrap; }
+
+  .cv-card {
+    margin-top: 8px;
+    padding: 16px 20px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .cv-card .label { font-weight: 500; color: var(--text); }
+  .cv-card .note { color: var(--text-muted); font-size: 0.88rem; margin-top: 2px; }
+  .cv-card a {
+    background: var(--accent);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border-bottom: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .cv-card a:hover { background: #2d6ea3; color: white; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--border);
+    margin-top: 64px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 20px;
+    }
+    .hero .avatar { margin: 0 auto; width: 140px; height: 140px; font-size: 3rem; }
+    .socials { justify-content: center; }
+    .pub { grid-template-columns: 1fr; }
+    .pub .thumb { width: 100%; height: 180px; }
+    nav.topnav ul { gap: 14px; }
+    nav.topnav .inner { padding: 12px 18px; }
+    h1 { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="inner">
+    <div class="brand">Jiahe (Grace) Liu</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ HERO / ABOUT ============ -->
+  <section id="about" class="hero">
+    <div class="avatar">
+      <img src="photo.jpg" alt="Jiahe (Grace) Liu" onerror="this.style.display='none'; this.parentElement.innerHTML='G';">
+    </div>
+    <div>
+      <h1>Jiahe (Grace) Liu</h1>
+      <div class="role">PhD Candidate</div>
+      <div class="affiliation">
+        Faculty of Information Technology<span class="dot">·</span>Monash University
+      </div>
+      <p>
+        I am a PhD candidate at the Faculty of Information Technology, Monash
+        University, supervised by
+        <a href="https://research.monash.edu/en/persons/zongyuan-ge" target="_blank" rel="noopener">A/Prof Zongyuan Ge</a>,
+        <a href="https://research.monash.edu/en/persons/levin-kuhlmann" target="_blank" rel="noopener">A/Prof Levin Kuhlmann</a>, and
+        <a href="https://research.monash.edu/en/persons/duong-nhu-2/" target="_blank" rel="noopener">Dr Duong Nhu</a>.
+      </p>
+      <p>
+        My research focuses on <strong>multimodal AI systems for clinical decision support</strong>
+        in neurology and mental health, bringing together signals from imaging, text, and
+        physiological data to build tools that support clinicians in real-world diagnostic
+        and care settings.
+      </p>
+      <p>
+        Previously, I completed my Bachelor of Science (Data Science) and Master of Data Science
+        at the University of Melbourne, where I was advised by
+        <a href="https://findanexpert.unimelb.edu.au/profile/886714-mike-conway" target="_blank" rel="noopener">A/Prof Mike Conway</a>.
+      </p>
+
+      <div class="interests">
+        <span class="tag">Multimodal AI</span>
+        <span class="tag">Clinical Decision Support</span>
+        <span class="tag">Neurology</span>
+        <span class="tag">Mental Health</span>
+        <span class="tag">Medical Imaging</span>
+      </div>
+
+      <div class="socials">
+        <a href="mailto:grace.liu@monash.edu" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=GTIBgd4AAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://github.com/gracelovesyah" target="_blank" rel="noopener" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.2 3.3-1.2.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/grace-liu-530673202/" target="_blank" rel="noopener" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section id="news">
+    <h2>News</h2>
+    <div class="news-scroll">
+    <ul class="news-list">
+      <li><span class="date">May 2026</span>Our paper <em>Skin2Mind</em> was provisionally accepted to <strong>MICCAI 2026</strong> (first author).</li>
+      <li><span class="date">Apr 2026</span>Our poster won the <strong>Best Poster Award</strong> at the <a href="https://www.linkedin.com/feed/update/urn:li:activity:7444644005000163328/" target="_blank" rel="noopener">Maths in the Brain Workshop 2026</a>.</li>
+      <li><span class="date">Apr 2026</span>One paper accepted to <a href="https://arxiv.org/pdf/2601.03578" target="_blank" rel="noopener"><strong>ACL Findings 2026</strong></a>.</li>
+      <li><span class="date">Apr 2026</span>One abstract accepted at the <a href="https://www.sleepmeeting.org/" target="_blank" rel="noopener"><strong>SLEEP Annual Meeting 2026</strong></a>.</li>
+      <li><span class="date">Mar 2026</span>One paper accepted to <a href="https://aclanthology.org/2026.eacl-short.46/" target="_blank" rel="noopener"><strong>EACL 2026</strong></a>.</li>
+      <li><span class="date">May 2025</span>One paper accepted to <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1590689/full" target="_blank" rel="noopener"><strong>Frontiers in Public Health</strong></a> (first author).</li>
+      <li><span class="date">May 2025</span>One paper accepted to <a href="https://link.springer.com/chapter/10.1007/978-3-032-04978-0_36" target="_blank" rel="noopener"><strong>MICCAI 2025</strong></a>.</li>
+      <li><span class="date">Dec 2024</span>One paper accepted to the <a href="https://aclanthology.org/2024.alta-1.15/" target="_blank" rel="noopener"><strong>ALTA Workshop</strong></a> (first author).</li>
+      <li><span class="date">Dec 2024</span>One paper accepted to the <a href="https://aclanthology.org/2024.bionlp-1.42/" target="_blank" rel="noopener"><strong>ACL BioNLP Workshop</strong></a>.</li>
+    </ul>
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section id="publications">
+    <h2>Publications</h2>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px;">
+      <span style="color: var(--accent); font-weight: 600;">*</span> denotes first-author publications.
+      A full list is available on <a href="https://scholar.google.com/citations?user=GTIBgd4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+    </p>
+
+    <div class="pub-year">2026</div>
+
+    <div class="pub">
+      <div class="thumb"><a href="p1.png" target="_blank" rel="noopener" title="Click to view full size"><img src="p1.png" alt="Skin2Mind"></a></div>
+      <div>
+        <div class="pub-title">
+          Skin2Mind: A Multimodal Framework for Mental Health Risk Screening via Facial Images and Structured Skin Reports
+          <span style="color: var(--accent);">*</span>
+        </div>
+        <div class="pub-authors">
+          <span class="me">Jiahe Liu</span>, Duong Nhu, Xiangyu Zhao, Yiwen Jiang, Siyuan Yan, Xiangyi Xue, Yaling Shen, Guilherme Camargo de Oliveira, Stephanie Fong, Qingyang Xu, Zimu Wang, Fudi Wang, Xiaoqing Zhang, Dominic Dwyer, Levin Kuhlmann, Zongyuan Ge
+        </div>
+        <div class="pub-venue">MICCAI 2026 (provisionally accepted)</div>
+      </div>
+    </div>
+
+    <div class="pub-year">2025</div>
+
+    <div class="pub">
+      <div class="thumb"><a href="p2.png" target="_blank" rel="noopener" title="Click to view full size"><img src="p2.png" alt="Explainable ML for Internet Addiction"></a></div>
+      <div>
+        <div class="pub-title">
+          Explainable machine learning prediction of internet addiction among Chinese primary and middle school children and adolescents: a longitudinal study based on positive youth development data (2019–2022)
+          <span style="color: var(--accent);">*</span>
+        </div>
+        <div class="pub-authors">
+          <span class="me">Jiahe Liu</span><sup>†</sup>, Lang Chen<sup>†</sup>, Yuxin Chen<sup>†</sup>, Jingsong Luo, Kexin Yu, Linlin Fan, Chan Yong, Huiyu He, Simei Liao, Zongyuan Ge, Lihua Jiang
+        </div>
+        <div class="pub-venue">Frontiers in Public Health, Vol. 13, 2025</div>
+        <div class="pub-links">
+          <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1590689/full" target="_blank" rel="noopener">Paper</a>
+          <a href="https://doi.org/10.3389/fpubh.2025.1590689" target="_blank" rel="noopener">DOI</a>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;"><sup>†</sup> Equal contribution</div>
+      </div>
+    </div>
+
+    <div class="pub-year">2024</div>
+
+    <div class="pub">
+      <div class="thumb"><a href="p3.png" target="_blank" rel="noopener" title="Click to view full size"><img src="p3.png" alt="Breaking the Silence: Lung Cancer Forums"></a></div>
+      <div>
+        <div class="pub-title">
+          Breaking the Silence: How Online Forums Address Lung Cancer Stigma and Offer Support
+          <span style="color: var(--accent);">*</span>
+        </div>
+        <div class="pub-authors">
+          <span class="me">Jiahe Liu</span>, Mike Conway, Daniel Cabrera Lozoya
+        </div>
+        <div class="pub-venue">Proceedings of the 22nd Australasian Language Technology Association Workshop (ALTA), 2024</div>
+        <div class="pub-links">
+          <a href="https://aclanthology.org/2024.alta-1.15/" target="_blank" rel="noopener">Paper</a>
+          <a href="https://aclanthology.org/2024.alta-1.15.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="row">
+      <div>
+        <div class="label">Clinical Research Observership</div>
+        <div style="font-size:0.88rem;color:var(--text-muted);">
+          <a href="https://www.wchscu.cn/Home.html" target="_blank" rel="noopener">West China Hospital</a> (Outpatient Dept.) ·
+          <a href="https://hx4.org/index.html" target="_blank" rel="noopener">West China Fourth Hospital</a> (Sleep Medicine Center) ·
+          Sichuan University · supervised by Prof. Xiaoqing Zhang
+        </div>
+      </div>
+      <div class="meta">Dec 2025 – Feb 2026</div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="label">Research Intern</div>
+        <div style="font-size:0.88rem;color:var(--text-muted);">
+          <a href="https://www.wehi.edu.au/about/" target="_blank" rel="noopener">Walter and Eliza Hall Institute of Medical Research (WEHI)</a> · supervised by
+          <a href="https://www.linkedin.com/in/rowlandm-gaicd/" target="_blank" rel="noopener">Dr Rowland Mosbergen</a>
+        </div>
+      </div>
+      <div class="meta">Nov 2023 – Feb 2024</div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="label">Campus Ambassador</div>
+        <div style="font-size:0.88rem;color:var(--text-muted);"><a href="https://www.boe.com/en/" target="_blank" rel="noopener">BOE Technology Group Co., Ltd.</a> · Human Resources Department</div>
+      </div>
+      <div class="meta">Jan 2021 – Dec 2023</div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="label">Business Intern</div>
+        <div style="font-size:0.88rem;color:var(--text-muted);"><a href="https://www.cs.ecitic.com/newsite/en/" target="_blank" rel="noopener">CITIC Securities (CITICS)</a> · Brokerage Department</div>
+      </div>
+      <div class="meta">Dec 2022 – Feb 2023</div>
+    </div>
+  </section>
+
+  <!-- ============ ACADEMIC SERVICE ============ -->
+  <section id="service">
+    <h2>Academic Service</h2>
+    <div class="row">
+      <div>
+        <div class="label">Conference Reviewer</div>
+        <div style="font-size:0.88rem;color:var(--text-muted);">MICCAI — Medical Image Computing and Computer Assisted Intervention</div>
+      </div>
+      <div class="meta">2026</div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Feel free to reach out at
+      <a href="mailto:grace.liu@monash.edu">grace.liu@monash.edu</a>.
+      I'm always happy to chat about research, collaboration, or anything in between.
+    </p>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">
+      Faculty of Information Technology<br>
+      Monash University, Clayton Campus, VIC 3168, Australia
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Jiahe Liu &nbsp;·&nbsp; Built with care
+</footer>
+
+</body>
+</html>

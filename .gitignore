@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Temp files
+p1_test-*.png
+
+# CV source files (optional — remove these lines if you want them on the public site)
+*.docx
+p1.pdf
