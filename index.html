@@ -69,7 +69,9 @@
     font-weight: 600;
     color: var(--text);
     letter-spacing: -0.01em;
+    border-bottom: none;
   }
+  nav.topnav .brand:hover { color: var(--accent); }
   nav.topnav ul {
     list-style: none;
     display: flex;
@@ -403,10 +405,9 @@
 
 <nav class="topnav">
   <div class="inner">
-    <div class="brand">Jiahe (Grace) Liu</div>
+    <a class="brand" href="#about">Jiahe (Grace) Liu</a>
     <div class="nav-actions">
       <ul>
-        <li><a href="#about" data-i18n="nav.about">About</a></li>
         <li><a href="#news" data-i18n="nav.news">News</a></li>
         <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
         <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
@@ -636,7 +637,7 @@
       button: '中文',
       buttonLabel: 'Switch to Chinese',
       name: 'Jiahe (Grace) Liu',
-      nav: ['About', 'News', 'Publications', 'Experience', 'Service', 'Contact'],
+      nav: ['News', 'Publications', 'Experience', 'Service', 'Contact'],
       hero: [
         `I am a second-year PhD candidate at the Faculty of Information Technology, Monash
         University, supervised by
@@ -696,7 +697,7 @@
       button: 'English',
       buttonLabel: '切换到英文',
       name: '刘嘉和（Grace）',
-      nav: ['关于', '动态', '论文', '经历', '服务', '联系'],
+      nav: ['动态', '论文', '经历', '服务', '联系'],
       hero: [
         `我目前是 Monash University 信息技术学院二年级博士生，导师为
         <a href="https://research.monash.edu/en/persons/zongyuan-ge" target="_blank" rel="noopener">A/Prof Zongyuan Ge</a>、
@@ -754,7 +755,7 @@
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     localStorage.setItem('preferredLanguage', lang);
 
-    document.querySelectorAll('nav.topnav a').forEach((item, index) => {
+    document.querySelectorAll('nav.topnav ul a').forEach((item, index) => {
       item.textContent = copy.nav[index];
     });
 
