@@ -73,10 +73,23 @@
   nav.topnav ul {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 22px;
+    width: 100%;
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
+  }
+  nav.topnav .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 1;
+  }
+  nav.topnav .language-item {
+    margin-left: auto;
   }
   nav.topnav a {
     color: var(--text-soft);
@@ -85,6 +98,24 @@
     border-bottom: none;
   }
   nav.topnav a:hover { color: var(--accent); }
+  .language-toggle {
+    border: 1px solid var(--accent-line);
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 5px 11px;
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .language-toggle:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
 
   /* ---------- Layout ---------- */
   main {
@@ -362,6 +393,7 @@
     .pub { grid-template-columns: 1fr; }
     .pub .thumb { width: 100%; height: 180px; }
     nav.topnav ul { gap: 14px; }
+    nav.topnav .nav-actions { gap: 12px; }
     nav.topnav .inner { padding: 12px 18px; }
     h1 { font-size: 1.7rem; }
   }
@@ -372,14 +404,17 @@
 <nav class="topnav">
   <div class="inner">
     <div class="brand">Jiahe (Grace) Liu</div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#service">Service</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-actions">
+      <ul>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#news" data-i18n="nav.news">News</a></li>
+        <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#service" data-i18n="nav.service">Service</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li class="language-item"><button class="language-toggle" type="button" id="languageToggle" aria-label="Switch language">中文</button></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -462,7 +497,6 @@
   <section id="publications">
     <h2>Publications</h2>
     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px;">
-      <span style="color: var(--accent); font-weight: 600;">*</span> denotes first-author publications.
       A full list is available on <a href="https://scholar.google.com/citations?user=GTIBgd4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
     </p>
 
@@ -595,6 +629,189 @@
 <footer>
   &copy; 2026 Jiahe Liu &nbsp;·&nbsp; Built with care
 </footer>
+
+<script>
+  const translations = {
+    en: {
+      button: '中文',
+      buttonLabel: 'Switch to Chinese',
+      name: 'Jiahe (Grace) Liu',
+      nav: ['About', 'News', 'Publications', 'Experience', 'Service', 'Contact'],
+      hero: [
+        `I am a second-year PhD candidate at the Faculty of Information Technology, Monash
+        University, supervised by
+        <a href="https://research.monash.edu/en/persons/zongyuan-ge" target="_blank" rel="noopener">A/Prof Zongyuan Ge</a>,
+        <a href="https://research.monash.edu/en/persons/levin-kuhlmann" target="_blank" rel="noopener">A/Prof Levin Kuhlmann</a>, and
+        <a href="https://research.monash.edu/en/persons/duong-nhu-2/" target="_blank" rel="noopener">Dr Duong Nhu</a>.`,
+        `My research focuses on <strong>multimodal AI systems for clinical decision support</strong>
+        in neurology and mental health, bringing together signals from imaging, text, and
+        physiological data to build tools that support clinicians in real-world diagnostic
+        and care settings.`,
+        `Previously, I completed my Bachelor of Science (Data Science) and Master of Data Science
+        at the University of Melbourne, where I was advised by
+        <a href="https://findanexpert.unimelb.edu.au/profile/886714-mike-conway" target="_blank" rel="noopener">A/Prof Mike Conway</a>.`
+      ],
+      tags: ['Multimodal AI', 'Clinical Decision Support', 'Neurology', 'Mental Health', 'Medical Imaging'],
+      headings: ['News', 'Publications', 'Experience', 'Academic Service', 'Contact'],
+      news: [
+        '<span class="date">May 2026</span>Our paper <em>Skin2Mind</em> was provisionally accepted to <strong>MICCAI 2026</strong> (first author).',
+        '<span class="date">Apr 2026</span>Our poster won the <strong>Best Poster Award</strong> at the <a href="https://www.linkedin.com/feed/update/urn:li:activity:7444644005000163328/" target="_blank" rel="noopener">Maths in the Brain Workshop 2026</a>.',
+        '<span class="date">Apr 2026</span>One paper accepted to <a href="https://arxiv.org/pdf/2601.03578" target="_blank" rel="noopener"><strong>ACL Findings 2026</strong></a>.',
+        '<span class="date">Apr 2026</span>One abstract accepted at the <a href="https://www.sleepmeeting.org/" target="_blank" rel="noopener"><strong>SLEEP Annual Meeting 2026</strong></a>.',
+        '<span class="date">Mar 2026</span>One paper accepted to <a href="https://aclanthology.org/2026.eacl-short.46/" target="_blank" rel="noopener"><strong>EACL 2026</strong></a>.',
+        '<span class="date">May 2025</span>One paper accepted to <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1590689/full" target="_blank" rel="noopener"><strong>Frontiers in Public Health</strong></a> (first author).',
+        '<span class="date">May 2025</span>One paper accepted to <a href="https://link.springer.com/chapter/10.1007/978-3-032-04978-0_36" target="_blank" rel="noopener"><strong>MICCAI 2025</strong></a>.',
+        '<span class="date">Dec 2024</span>One paper accepted to the <a href="https://aclanthology.org/2024.alta-1.15/" target="_blank" rel="noopener"><strong>ALTA Workshop</strong></a> (first author).',
+        '<span class="date">Dec 2024</span>One paper accepted to the <a href="https://aclanthology.org/2024.bionlp-1.42/" target="_blank" rel="noopener"><strong>ACL BioNLP Workshop</strong></a>.'
+      ],
+      publicationNote: 'A full list is available on <a href="https://scholar.google.com/citations?user=GTIBgd4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.',
+      publicationTitles: [
+        'Skin2Mind: A Multimodal Framework for Mental Health Risk Screening via Facial Images and Structured Skin Reports <span style="color: var(--accent);">*</span>',
+        'Explainable machine learning prediction of internet addiction among Chinese primary and middle school children and adolescents: a longitudinal study based on positive youth development data (2019–2022) <span style="color: var(--accent);">*</span>',
+        'Breaking the Silence: How Online Forums Address Lung Cancer Stigma and Offer Support <span style="color: var(--accent);">*</span>'
+      ],
+      venues: [
+        'MICCAI 2026 (provisionally accepted)',
+        'Frontiers in Public Health, Vol. 13, 2025',
+        'Proceedings of the 22nd Australasian Language Technology Association Workshop (ALTA), 2024'
+      ],
+      paperLinks: ['Paper', 'DOI', 'Paper', 'PDF'],
+      equalContribution: '<sup>†</sup> Equal contribution',
+      experienceLabels: ['Clinical Research Observership', 'Research Intern', 'Campus Ambassador', 'Business Intern'],
+      experienceDetails: [
+        '<a href="https://www.wchscu.cn/Home.html" target="_blank" rel="noopener">West China Hospital</a> (Outpatient Dept.) · <a href="https://hx4.org/index.html" target="_blank" rel="noopener">West China Fourth Hospital</a> (Sleep Medicine Center) · Sichuan University · supervised by Prof. Xiaoqing Zhang',
+        '<a href="https://www.wehi.edu.au/about/" target="_blank" rel="noopener">Walter and Eliza Hall Institute of Medical Research (WEHI)</a> · supervised by <a href="https://www.linkedin.com/in/rowlandm-gaicd/" target="_blank" rel="noopener">Dr Rowland Mosbergen</a>',
+        '<a href="https://www.boe.com/en/" target="_blank" rel="noopener">BOE Technology Group Co., Ltd.</a> · Human Resources Department',
+        '<a href="https://www.cs.ecitic.com/newsite/en/" target="_blank" rel="noopener">CITIC Securities (CITICS)</a> · Brokerage Department'
+      ],
+      serviceLabel: 'Conference Reviewer',
+      serviceDetail: 'MICCAI — Medical Image Computing and Computer Assisted Intervention',
+      contact: [
+        'Feel free to reach out at <a href="mailto:grace.liu@monash.edu">grace.liu@monash.edu</a>. I\'m always happy to chat about research, collaboration, or anything in between.',
+        'Faculty of Information Technology<br>Monash University, Clayton Campus, VIC 3168, Australia'
+      ],
+      footer: '&copy; 2026 Jiahe Liu &nbsp;·&nbsp; Built with care'
+    },
+    zh: {
+      button: 'English',
+      buttonLabel: '切换到英文',
+      name: '刘嘉和（Grace）',
+      nav: ['关于', '动态', '论文', '经历', '服务', '联系'],
+      hero: [
+        `我目前是 Monash University 信息技术学院二年级博士生，导师为
+        <a href="https://research.monash.edu/en/persons/zongyuan-ge" target="_blank" rel="noopener">A/Prof Zongyuan Ge</a>、
+        <a href="https://research.monash.edu/en/persons/levin-kuhlmann" target="_blank" rel="noopener">A/Prof Levin Kuhlmann</a> 和
+        <a href="https://research.monash.edu/en/persons/duong-nhu-2/" target="_blank" rel="noopener">Dr Duong Nhu</a>。`,
+        `我的研究方向是面向神经科学与心理健康的<strong>临床决策支持多模态人工智能系统</strong>，结合影像、文本与生理信号，构建可支持真实诊断和护理场景中临床医生工作的工具。`,
+        `在此之前，我于 University of Melbourne 完成数据科学本科与数据科学硕士学位，导师为
+        <a href="https://findanexpert.unimelb.edu.au/profile/886714-mike-conway" target="_blank" rel="noopener">A/Prof Mike Conway</a>。`
+      ],
+      tags: ['多模态人工智能', '临床决策支持', '神经科学', '心理健康', '医学影像'],
+      headings: ['动态', '论文', '经历', '学术服务', '联系'],
+      news: [
+        '<span class="date">2026年5月</span>我们的论文 <em>Skin2Mind</em> 被 <strong>MICCAI 2026</strong> 暂定录用（第一作者）。',
+        '<span class="date">2026年4月</span>我们的海报在 <a href="https://www.linkedin.com/feed/update/urn:li:activity:7444644005000163328/" target="_blank" rel="noopener">Maths in the Brain Workshop 2026</a> 获得 <strong>最佳海报奖</strong>。',
+        '<span class="date">2026年4月</span>一篇论文被 <a href="https://arxiv.org/pdf/2601.03578" target="_blank" rel="noopener"><strong>ACL Findings 2026</strong></a> 录用。',
+        '<span class="date">2026年4月</span>一篇摘要被 <a href="https://www.sleepmeeting.org/" target="_blank" rel="noopener"><strong>SLEEP Annual Meeting 2026</strong></a> 录用。',
+        '<span class="date">2026年3月</span>一篇论文被 <a href="https://aclanthology.org/2026.eacl-short.46/" target="_blank" rel="noopener"><strong>EACL 2026</strong></a> 录用。',
+        '<span class="date">2025年5月</span>一篇论文被 <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1590689/full" target="_blank" rel="noopener"><strong>Frontiers in Public Health</strong></a> 录用（第一作者）。',
+        '<span class="date">2025年5月</span>一篇论文被 <a href="https://link.springer.com/chapter/10.1007/978-3-032-04978-0_36" target="_blank" rel="noopener"><strong>MICCAI 2025</strong></a> 录用。',
+        '<span class="date">2024年12月</span>一篇论文被 <a href="https://aclanthology.org/2024.alta-1.15/" target="_blank" rel="noopener"><strong>ALTA Workshop</strong></a> 录用（第一作者）。',
+        '<span class="date">2024年12月</span>一篇论文被 <a href="https://aclanthology.org/2024.bionlp-1.42/" target="_blank" rel="noopener"><strong>ACL BioNLP Workshop</strong></a> 录用。'
+      ],
+      publicationNote: '完整列表可见 <a href="https://scholar.google.com/citations?user=GTIBgd4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>。',
+      publicationTitles: [
+        'Skin2Mind：基于面部图像与结构化皮肤报告的心理健康风险筛查多模态框架 <span style="color: var(--accent);">*</span>',
+        '基于积极青少年发展数据（2019–2022）的中国中小学生网络成瘾可解释机器学习预测：一项纵向研究 <span style="color: var(--accent);">*</span>',
+        'Breaking the Silence：在线论坛如何回应肺癌污名并提供支持 <span style="color: var(--accent);">*</span>'
+      ],
+      venues: [
+        'MICCAI 2026（暂定录用）',
+        'Frontiers in Public Health，第 13 卷，2025',
+        '第 22 届 Australasian Language Technology Association Workshop (ALTA) 论文集，2024'
+      ],
+      paperLinks: ['论文', 'DOI', '论文', 'PDF'],
+      equalContribution: '<sup>†</sup> 共同贡献',
+      experienceLabels: ['临床研究见习', '研究实习生', '校园大使', '业务实习生'],
+      experienceDetails: [
+        '<a href="https://www.wchscu.cn/Home.html" target="_blank" rel="noopener">华西医院</a>（门诊部） · <a href="https://hx4.org/index.html" target="_blank" rel="noopener">华西第四医院</a>（睡眠医学中心） · 四川大学 · Prof. Xiaoqing Zhang 指导',
+        '<a href="https://www.wehi.edu.au/about/" target="_blank" rel="noopener">Walter and Eliza Hall Institute of Medical Research (WEHI)</a> · <a href="https://www.linkedin.com/in/rowlandm-gaicd/" target="_blank" rel="noopener">Dr Rowland Mosbergen</a> 指导',
+        '<a href="https://www.boe.com/en/" target="_blank" rel="noopener">BOE Technology Group Co., Ltd.</a> · 人力资源部',
+        '<a href="https://www.cs.ecitic.com/newsite/en/" target="_blank" rel="noopener">中信证券 (CITICS)</a> · 营业部'
+      ],
+      serviceLabel: '会议审稿人',
+      serviceDetail: 'MICCAI — Medical Image Computing and Computer Assisted Intervention',
+      contact: [
+        '欢迎通过 <a href="mailto:grace.liu@monash.edu">grace.liu@monash.edu</a> 联系我。我很乐意交流研究、合作或任何有趣的话题。',
+        'Faculty of Information Technology<br>Monash University, Clayton Campus, VIC 3168, Australia'
+      ],
+      footer: '&copy; 2026 Jiahe Liu &nbsp;·&nbsp; 用心搭建'
+    }
+  };
+
+  const setLanguage = (lang) => {
+    const copy = translations[lang];
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    localStorage.setItem('preferredLanguage', lang);
+
+    document.querySelectorAll('nav.topnav a').forEach((item, index) => {
+      item.textContent = copy.nav[index];
+    });
+
+    const toggle = document.getElementById('languageToggle');
+    toggle.textContent = copy.button;
+    toggle.setAttribute('aria-label', copy.buttonLabel);
+    document.querySelector('.brand').textContent = copy.name;
+    document.querySelector('#about h1').textContent = copy.name;
+    document.title = copy.name;
+
+    document.querySelectorAll('#about p').forEach((item, index) => {
+      item.innerHTML = copy.hero[index];
+    });
+    document.querySelectorAll('.tag').forEach((item, index) => {
+      item.textContent = copy.tags[index];
+    });
+    document.querySelectorAll('main section:not(#about) h2').forEach((item, index) => {
+      item.textContent = copy.headings[index];
+    });
+    document.querySelectorAll('.news-list li').forEach((item, index) => {
+      item.innerHTML = copy.news[index];
+    });
+
+    document.querySelector('#publications > p').innerHTML = copy.publicationNote;
+    document.querySelectorAll('.pub-title').forEach((item, index) => {
+      item.innerHTML = copy.publicationTitles[index];
+    });
+    document.querySelectorAll('.pub-venue').forEach((item, index) => {
+      item.textContent = copy.venues[index];
+    });
+    document.querySelectorAll('.pub-links a').forEach((item, index) => {
+      item.textContent = copy.paperLinks[index];
+    });
+    const equalContribution = document.querySelector('.pub-links + div');
+    if (equalContribution) equalContribution.innerHTML = copy.equalContribution;
+
+    document.querySelectorAll('#experience .label').forEach((item, index) => {
+      item.textContent = copy.experienceLabels[index];
+    });
+    document.querySelectorAll('#experience .row > div:first-child > div:nth-child(2)').forEach((item, index) => {
+      item.innerHTML = copy.experienceDetails[index];
+    });
+    document.querySelector('#service .label').textContent = copy.serviceLabel;
+    document.querySelector('#service .row > div:first-child > div:nth-child(2)').textContent = copy.serviceDetail;
+
+    document.querySelectorAll('#contact p').forEach((item, index) => {
+      item.innerHTML = copy.contact[index];
+    });
+    document.querySelector('footer').innerHTML = copy.footer;
+  };
+
+  const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+  setLanguage(preferredLanguage);
+  document.getElementById('languageToggle').addEventListener('click', () => {
+    setLanguage(document.documentElement.lang === 'zh-CN' ? 'en' : 'zh');
+  });
+</script>
 
 </body>
 </html>
