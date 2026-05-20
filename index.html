@@ -374,6 +374,21 @@
     border-top: 1px solid var(--border);
     margin-top: 64px;
   }
+  .visitor-map {
+    margin: 22px auto 0;
+    width: 300px;
+    max-width: 100%;
+  }
+  .visitor-map script,
+  .visitor-map a,
+  .visitor-map img,
+  .visitor-map canvas,
+  .visitor-map iframe {
+    max-width: 300px !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+  }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 640px) {
@@ -623,12 +638,15 @@
       Faculty of Information Technology<br>
       Monash University, Clayton Campus, VIC 3168, Australia
     </p>
+    <div class="visitor-map">
+      <script type="text/javascript" id="clustrmaps" src="https://cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=NUrZofIa08tVzmAn_W3YNco-wJUSqVk2oSKJfgWQa9o&cmo=e8bdca&cmn=bea8db&co=88bbe0"></script>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  &copy; 2026 Jiahe Liu &nbsp;·&nbsp; Built with care
+  <div id="footerCredit">&copy; 2026 Jiahe Liu &nbsp;·&nbsp; Built with care</div>
 </footer>
 
 <script>
@@ -691,7 +709,7 @@
         'Feel free to reach out at <a href="mailto:grace.liu@monash.edu">grace.liu@monash.edu</a>. I\'m always happy to chat about research, collaboration, or anything in between.',
         'Faculty of Information Technology<br>Monash University, Clayton Campus, VIC 3168, Australia'
       ],
-      footer: '&copy; 2026 Jiahe Liu &nbsp;·&nbsp; Built with care'
+      footerCredit: '&copy; 2026 Jiahe Liu &nbsp;·&nbsp; Built with care'
     },
     zh: {
       button: 'English',
@@ -746,7 +764,7 @@
         '欢迎通过 <a href="mailto:grace.liu@monash.edu">grace.liu@monash.edu</a> 联系我。我很乐意交流研究、合作或任何有趣的话题。',
         'Faculty of Information Technology<br>Monash University, Clayton Campus, VIC 3168, Australia'
       ],
-      footer: '&copy; 2026 Jiahe Liu &nbsp;·&nbsp; 用心搭建'
+      footerCredit: '&copy; 2026 Jiahe Liu &nbsp;·&nbsp; 用心搭建'
     }
   };
 
@@ -804,7 +822,7 @@
     document.querySelectorAll('#contact p').forEach((item, index) => {
       item.innerHTML = copy.contact[index];
     });
-    document.querySelector('footer').innerHTML = copy.footer;
+    document.getElementById('footerCredit').innerHTML = copy.footerCredit;
   };
 
   const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
